@@ -206,24 +206,24 @@ namespace MeatlyJam
 		{
 			auto widgetFactory = CSCore::Application::Get()->GetWidgetFactory();
 
-			auto templateWidget = resourcepool->LoadResource<CSUI::WidgetTemplate>( CSCore::StorageLocation::k_package, "UI/Menu.csui" );
+			auto templateWidget = resourcepool->LoadResource<CSUI::WidgetTemplate>( CSCore::StorageLocation::k_package, "UI/Event.csui" );
 
 			UI = widgetFactory->Create( templateWidget );
 			GetUICanvas()->AddWidget( UI );
 
 			// Sort out name & twitter credits
-			CSUI::TextComponent* text = UI->GetWidget( "Label_Name" )->GetComponent<CSUI::TextComponent>();
-			text->SetTextScale( 0.5f );
-			text = UI->GetWidget( "Label_Handle" )->GetComponent<CSUI::TextComponent>();
-			text->SetTextScale( 0.5f );
+			//CSUI::TextComponent* text = UI->GetWidget( "Label_Name" )->GetComponent<CSUI::TextComponent>();
+			//text->SetTextScale( 0.5f );
+			//text = UI->GetWidget( "Label_Handle" )->GetComponent<CSUI::TextComponent>();
+			//text->SetTextScale( 0.5f );
 
-			// Add play button event
-			Connection_Button_Play_ReleaseInside = UI->GetWidget( "Button_Play" )->GetReleasedInsideEvent().OpenConnection(
-				[]( CSUI::Widget* in_widget, const CSInput::Pointer& in_pointer, CSInput::Pointer::InputType in_inputType )
-				{
-					CSCore::Application::Get()->GetStateManager()->Change( (CSCore::StateSPtr) new GameState() );
-				}
-			);
+			//// Add play button event
+			//Connection_Button_Play_ReleaseInside = UI->GetWidget( "Button_Play" )->GetReleasedInsideEvent().OpenConnection(
+			//	[]( CSUI::Widget* in_widget, const CSInput::Pointer& in_pointer, CSInput::Pointer::InputType in_inputType )
+			//	{
+			//		CSCore::Application::Get()->GetStateManager()->Change( (CSCore::StateSPtr) new GameState() );
+			//	}
+			//);
 		}
 	}
 

@@ -1,0 +1,50 @@
+{
+	"Type": "Widget",
+	"Name": "Event",
+	"RelPosition": "0.0 0.2",
+	"RelSize": "0.75 0.5",
+
+	"Children": [
+		{
+			"Type": "HighlightButton",
+			"Name": "Panel",
+			"RelPosition": "0.0 0.0",
+			"RelSize": "1.0 1.0",
+			"NormalDrawable": {
+				"Type": "NinePatch",
+				"Insets": "0.25 0.25 0.25 0.25",
+				"TexturePath": "red_panel.png"
+			},
+			"Children": [
+				{
+					"Type": "Label",
+					"Text": "Options",
+					"TextColour": "0.0 0.0 0.0 1.0"
+				},
+				{
+					"Type": "HighlightButton",
+					"Name": "AvatarBorder",
+					"RelPosition": "-0.40 0.25",
+					"RelSize": "0.1 0.25",
+					"NormalDrawable": {
+						"Type": "NinePatch",
+						"Insets": "0.25 0.25 0.25 0.25",
+						"TexturePath": "grey_panel.png"
+					},
+					"Children": [
+						{
+							"Type": "HighlightButton",
+							"Name": "Avatar",
+							"RelPosition": "0.0 0.0",
+							"RelSize": "1.0 1.0",
+							"NormalDrawable": {
+								"Type": "Standard",
+								"TexturePath": "face.png"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
