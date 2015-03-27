@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\AppSource\App.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\AppSource\State.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\AppSource\App.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\AppSource\State.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{617964fa-109f-40c0-8db9-4c6529a30d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{6267b7d0-900c-4ecb-9df8-e04ac60d90db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
