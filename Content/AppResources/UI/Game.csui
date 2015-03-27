@@ -1,0 +1,39 @@
+{
+	"Type": "Widget",
+	"Name": "Game",
+	"RelSize": "1 1",
+
+	"Children": [
+		{
+			"Type": "HighlightButton",
+			"Name": "OptionsButton",
+			"RelPosition": "0.0 -0.166665",
+			"RelSize": "0.4 0.1",
+			"NormalDrawable": {
+				"Type": "ThreePatch",
+				"Insets": "0.25 0.25",
+				"TexturePath": "green_button09.png",
+				"Direction": "Horizontal"
+			},
+			"HighlightDrawable": {
+				"Type": "ThreePatch",
+				"Insets": "0.25 0.25",
+				"TexturePath": "green_button10.png",
+				"Direction": "Horizontal"
+			},
+			"Children": [
+				{
+					"Type": "Label",
+					"Text": "Options",
+					"TextColour": "0.0 0.0 0.0 1.0"
+				}
+			]
+		},
+		{
+			"Type": "Label",
+			"Name": "Test",
+			"Text": "Options",
+			"TextColour": "0.0 0.0 0.0 1.0"
+		}
+	]
+}

@@ -1,7 +1,7 @@
 //
-//  State.h
+//  MenuState.h
 //  MeatlyJam
-//  Created by Ian Copland on 15/10/2014.
+//  Created by Matthew Cormack 27/03/15
 //
 //  The MIT License (MIT)
 //
@@ -26,15 +26,25 @@
 //  THE SOFTWARE.
 //
 
-#ifndef _CSEMPTYTEMPLATE_STATE_H_
-#define _CSEMPTYTEMPLATE_STATE_H_
+#ifndef MEATLYJAM_MENUSTATE_H
+#define MEATLYJAM_MENUSTATE_H
 
 #include <ChilliSource/ChilliSource.h>
 #include <ChilliSource/Core/State.h>
+#include <ChilliSource/Core/Event.h>
+
+#define TILE_GROUND_WIDTH 133
+#define TILE_GROUND_HEIGHT 127
+#define TILE_OFFSET_WIDTH 64
+#define TILE_OFFSET_HEIGHT 64
+
+#define CITY_WIDTH 5
+#define CITY_HEIGHT 5
+#define CITY_COS 8
 
 namespace MeatlyJam
 {
-	class State : public CSCore::State
+	class MenuState : public CSCore::State
 	{
 		public:
 			void CreateSystems() override;
@@ -43,8 +53,21 @@ namespace MeatlyJam
 			void OnDestroy() override;
 
 		private:
+			// The main menu orthographic camera
 			CSCore::EntitySPtr Camera;
+
+			// The background city sprites
+			CSCore::EntitySPtr* City;
+
+			// The main menu UI widget
+			CSUI::WidgetSPtr UI;
+
+			// Store the time since the state began
+			f32 Time;
+
+			// The connection to the released inside play button event
+			CSCore::EventConnectionUPtr Connection_Button_Play_ReleaseInside;
 	};
 }
 
-#endif
+#endif // MEATLYJAM_MENUSTATE_H

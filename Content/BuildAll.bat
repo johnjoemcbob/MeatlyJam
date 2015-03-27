@@ -26,6 +26,6 @@
 ::  THE SOFTWARE.
 ::
 
-python ../Tools/Scripts/content_builder.py PrebuiltResources/ AppResources/
+C:/Python34/python ../Tools/Scripts/content_builder.py PrebuiltResources/ AppResources/
 
 PAUSE

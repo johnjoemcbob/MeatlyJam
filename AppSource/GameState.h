@@ -1,5 +1,5 @@
 //
-//  App.cpp
+//  GameState.h
 //  MeatlyJam
 //  Created by Matthew Cormack 27/03/15
 //
@@ -26,36 +26,26 @@
 //  THE SOFTWARE.
 //
 
-#include <App.h>
+#ifndef MEATLYJAM_GAMESTATE_H
+#define MEATLYJAM_GAMESTATE_H
 
-#include <MenuState.h>
-#include <GameState.h>
-
-CSCore::Application* CreateApplication()
-{
-	return new MeatlyJam::App();
-}
+#include <ChilliSource/ChilliSource.h>
+#include <ChilliSource/Core/State.h>
 
 namespace MeatlyJam
 {
-	void App::CreateSystems()
+	class GameState : public CSCore::State
 	{
-		//Create systems here.
-	}
+		public:
+			void CreateSystems() override;
+			void OnInit() override;
+			void OnUpdate( f32 in_deltaTime ) override;
+			void OnDestroy() override;
 
-	void App::OnInit()
-	{
-		
-	}
-
-	void App::PushInitialState()
-	{
-		GetStateManager()->Push( CSCore::StateSPtr( new MenuState() ) );
-	}
-
-	void App::OnDestroy()
-	{
-		//destruction stuff here.
-	}
+		private:
+			CSCore::EntitySPtr Camera;
+			CSCore::EntitySPtr Sprite_Test;
+	};
 }
 
+#endif // MEATLYJAM_GAMESTATE_H

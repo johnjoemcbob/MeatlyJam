@@ -4,7 +4,10 @@
     <ClCompile Include="..\..\AppSource\App.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\AppSource\State.cpp">
+    <ClCompile Include="..\..\AppSource\GameState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\AppSource\MenuState.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -12,7 +15,10 @@
     <ClInclude Include="..\..\AppSource\App.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\AppSource\State.h">
+    <ClInclude Include="..\..\AppSource\GameState.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\AppSource\MenuState.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,0 +1,56 @@
+{
+	"Type": "Widget",
+	"Name": "MainMenu",
+	"RelSize": "1 1",
+
+	"Children": [
+		{
+			"Type": "HighlightButton",
+			"Name": "Button_Play",
+			"RelPosition": "0.0 -0.2",
+			"RelSize": "0.4 0.1",
+			"NormalDrawable": {
+				"Type": "ThreePatch",
+				"Insets": "0.25 0.25",
+				"TexturePath": "green_button09.png",
+				"Direction": "Horizontal"
+			},
+			"HighlightDrawable": {
+				"Type": "ThreePatch",
+				"Insets": "0.25 0.25",
+				"TexturePath": "green_button10.png",
+				"Direction": "Horizontal"
+			},
+			"Children": [
+				{
+					"Type": "Label",
+					"Name": "Label_Play",
+					"Text": "Play Game",
+					"RelPosition": "0.0 0.1",
+					"TextColour": "0.53 0.94 0.38 1.0"
+				}
+			]
+		},
+		{
+			"Type": "Label",
+			"Name": "Label_Title",
+			"Text": "Game Dev Story",
+			"RelPosition": "0.0 -0.3",
+			"TextColour": "0.75 0.85 0.98 1.0"
+		},
+		{
+			"Type": "Label",
+			"Name": "Label_Name",
+			"Text": "Matthew Cormack",
+			"RelPosition": "0.0 -0.4",
+			"TextColour": "0.75 0.85 0.98 1.0"
+		},
+		{
+			"Type": "Label",
+			"Name": "Label_Handle",
+			"Text": "@johnjoemcbob",
+			"RelPosition": "0.0 -0.45",
+			"TextColour": "0.75 0.85 0.98 1.0"
+		}
+	]
+}
