@@ -26,14 +26,17 @@
 //  THE SOFTWARE.
 //
 
+// Associated header
 #include <MenuState.h>
 
+// Required engine headers
 #include <ChilliSource/Core/Base.h>
 #include <ChilliSource/Core/Math.h>
 #include <ChilliSource/Core/Resource.h>
 #include <ChilliSource/Core/Entity.h>
 #include <ChilliSource/Core/Scene.h>
 #include <ChilliSource/Core/State.h>
+
 #include <ChilliSource/UI/Base.h>
 #include <ChilliSource/UI/Text.h>
 
@@ -42,16 +45,17 @@
 #include <ChilliSource/Rendering/Texture.h>
 #include <ChilliSource/Rendering/Material.h>
 
+// Required application headers
 #include <GameState.h>
 
 namespace MeatlyJam
 {
-	void MenuState::CreateSystems()
+	void MenuStateClass::CreateSystems()
 	{
 		
 	}
 
-	void MenuState::OnInit()
+	void MenuStateClass::OnInit()
 	{
 		// Initialize state timer
 		Time = 0;
@@ -80,7 +84,9 @@ namespace MeatlyJam
 		GetScene()->Add( Camera );
 
 		// Create the background city
-		City = new CSCore::EntitySPtr[CITY_WIDTH * CITY_HEIGHT];
+		unsigned short buildings = CITY_WIDTH * CITY_HEIGHT;
+		City = new CSCore::EntitySPtr[buildings];
+		BuildingOffset = new float[buildings];
 		{
 			// Load the texture and texture atlas
 			CSRendering::TextureCSPtr texture_building = resourcepool->LoadResource<CSRendering::Texture>( CSCore::StorageLocation::k_package, "Textures/Building.csimage" );
@@ -108,6 +114,7 @@ namespace MeatlyJam
 				for ( unsigned short row = 0; row < CITY_HEIGHT; row++ )
 				{
 					unsigned short index = ( row * CITY_WIDTH ) + column;
+					BuildingOffset[index] = ( BUILDING_LERP_START + ( rand() % BUILDING_LERP_RANDOM ) ) * TILE_OFFSET_HEIGHT;
 					City[index] = CSCore::Entity::Create();
 					{
 						CSRendering::TextureAtlasCSPtr textureatlas = textureatlas_building;
@@ -195,7 +202,7 @@ namespace MeatlyJam
 						spritecomponent->SetOriginAlignment( CSRendering::AlignmentAnchor::k_topCentre );
 						City[index]->AddComponent( spritecomponent );
 
-						City[index]->GetTransform().SetPosition( CSCore::Vector3( ( column - row ) * TILE_OFFSET_WIDTH, ( ( column + row - 2 ) * 0.5f ) * TILE_OFFSET_HEIGHT, index ) );
+						City[index]->GetTransform().SetPosition( CSCore::Vector3( ( column - row ) * TILE_OFFSET_WIDTH, ( ( ( column + row - 2 ) * 0.5f ) * TILE_OFFSET_HEIGHT ) + BuildingOffset[index], index ) );
 					}
 					GetScene()->Add( City[index] );
 				}
@@ -206,36 +213,31 @@ namespace MeatlyJam
 		{
 			auto widgetFactory = CSCore::Application::Get()->GetWidgetFactory();
 
-			auto templateWidget = resourcepool->LoadResource<CSUI::WidgetTemplate>( CSCore::StorageLocation::k_package, "UI/Event.csui" );
+			auto templateWidget = resourcepool->LoadResource<CSUI::WidgetTemplate>( CSCore::StorageLocation::k_package, "UI/Menu.csui" );
 
 			UI = widgetFactory->Create( templateWidget );
 			GetUICanvas()->AddWidget( UI );
 
-			// Sort out name & twitter credits
-			//CSUI::TextComponent* text = UI->GetWidget( "Label_Name" )->GetComponent<CSUI::TextComponent>();
-			//text->SetTextScale( 0.5f );
-			//text = UI->GetWidget( "Label_Handle" )->GetComponent<CSUI::TextComponent>();
-			//text->SetTextScale( 0.5f );
-
-			//// Add play button event
-			//Connection_Button_Play_ReleaseInside = UI->GetWidget( "Button_Play" )->GetReleasedInsideEvent().OpenConnection(
-			//	[]( CSUI::Widget* in_widget, const CSInput::Pointer& in_pointer, CSInput::Pointer::InputType in_inputType )
-			//	{
-			//		CSCore::Application::Get()->GetStateManager()->Change( (CSCore::StateSPtr) new GameState() );
-			//	}
-			//);
+			// Add play button event
+			Connection_Button_Play_ReleaseInside = UI->GetWidget( "Button_Play" )->GetReleasedInsideEvent().OpenConnection(
+				[]( CSUI::Widget* in_widget, const CSInput::Pointer& in_pointer, CSInput::Pointer::InputType in_inputType )
+				{
+					CSCore::Application::Get()->GetStateManager()->Change( ( CSCore::StateSPtr ) new GameStateClass() );
+				}
+			);
 		}
 	}
 
-	void MenuState::OnUpdate( f32 in_deltaTime )
+	void MenuStateClass::OnUpdate( f32 in_deltaTime )
 	{
-		// Juice: Sine wave the buildings slowly
+		// Juice: Cos wave the buildings slowly, lerp them for the intro
 		Time += in_deltaTime;
 		for ( unsigned short column = 0; column < CITY_WIDTH; column++ )
 		{
 			for ( unsigned short row = 0; row < CITY_HEIGHT; row++ )
 			{
 				unsigned short index = ( row * CITY_WIDTH ) + column;
+				// Cos wave the buildings
 				f32 offx = column;
 				{
 					// Offset the cap to the center
@@ -256,11 +258,28 @@ namespace MeatlyJam
 				}
 				double costime = cos( Time + offx + offy );
 				City[index]->GetTransform().MoveBy( 0, costime / CITY_COS, 0 );
+
+				// Lerp the buildings towards the center
+				if ( BuildingOffset[index] > 0 )
+				{
+					float change = in_deltaTime * TILE_GROUND_HEIGHT * BUILDING_LERP_SPEED;
+					float newoffset = BuildingOffset[index] - change;
+					{
+						// Ensure it doesn't overshoot
+						if ( newoffset < 0 )
+						{
+							change = BuildingOffset[index];
+							newoffset = 0;
+						}
+					}
+					BuildingOffset[index] = newoffset;
+					City[index]->GetTransform().MoveBy( 0, -change, 0 );
+				}
 			}
 		}
 	}
 
-	void MenuState::OnDestroy()
+	void MenuStateClass::OnDestroy()
 	{
 		// Cleanup city background array of tiles
 		delete[] City;

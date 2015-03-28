@@ -29,14 +29,20 @@
 #ifndef MEATLYJAM_MENUSTATE_H
 #define MEATLYJAM_MENUSTATE_H
 
+// Required engine headers
 #include <ChilliSource/ChilliSource.h>
 #include <ChilliSource/Core/State.h>
 #include <ChilliSource/Core/Event.h>
 
+// Defines
 #define TILE_GROUND_WIDTH 133
 #define TILE_GROUND_HEIGHT 127
 #define TILE_OFFSET_WIDTH 64
 #define TILE_OFFSET_HEIGHT 64
+
+#define BUILDING_LERP_START 15
+#define BUILDING_LERP_RANDOM 6
+#define BUILDING_LERP_SPEED 5
 
 #define CITY_WIDTH 5
 #define CITY_HEIGHT 5
@@ -44,7 +50,7 @@
 
 namespace MeatlyJam
 {
-	class MenuState : public CSCore::State
+	class MenuStateClass : public CSCore::State
 	{
 		public:
 			void CreateSystems() override;
@@ -58,6 +64,9 @@ namespace MeatlyJam
 
 			// The background city sprites
 			CSCore::EntitySPtr* City;
+
+			// The y offset of each building as it plays the introduction lerp
+			float* BuildingOffset;
 
 			// The main menu UI widget
 			CSUI::WidgetSPtr UI;

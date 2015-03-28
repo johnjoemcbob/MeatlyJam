@@ -1,7 +1,7 @@
 //
-//  App.h
+//  Event.h
 //  MeatlyJam
-//  Created by Matthew Cormack 27/03/15
+//  Created by Matthew Cormack 28/03/15
 //
 //  The MIT License (MIT)
 //
@@ -26,23 +26,37 @@
 //  THE SOFTWARE.
 //
 
-#ifndef MEATLYJAM_APP_H
-#define MEATLYJAM_APP_H
+#ifndef MEATLYJAM_EVENT_H
+#define MEATLYJAM_EVENT_H
 
-// Required engine headers
-#include <ChilliSource/ChilliSource.h>
-#include <ChilliSource/Core/Base.h>
+// Required application headers
+#include <EventSystem.h>
+
+// Defines
+#define OPTIONS 3
 
 namespace MeatlyJam
 {
-	class App final : public CSCore::Application
+	// Forward Declarations
+	class EventSystemClass;
+
+	typedef struct
 	{
-		public:
-			void CreateSystems() override;
-			void OnInit() override;
-			void PushInitialState() override;
-			void OnDestroy() override;
-	};
+		// The text describing the option to display on the UI
+		char* Description;
+
+		// The callback function for this button press
+		void (*Callback)( EventSystemClass* eventsystem );
+	} OptionStruct;
+
+	typedef struct
+	{
+		// Description of the event to display on the UI
+		char* Description;
+
+		// The options available for this event
+		OptionStruct Option[OPTIONS];
+	} EventStruct;
 }
 
-#endif // MEATLYJAM_APP_H
+#endif // MEATLYJAM_EVENT_H

@@ -26,14 +26,17 @@
 //  THE SOFTWARE.
 //
 
+// Associated header
 #include <GameState.h>
 
+// Required engine headers
 #include <ChilliSource/Core/Base.h>
 #include <ChilliSource/Core/Math.h>
 #include <ChilliSource/Core/Resource.h>
 #include <ChilliSource/Core/Entity.h>
 #include <ChilliSource/Core/Scene.h>
 #include <ChilliSource/Core/State.h>
+
 #include <ChilliSource/UI/Base.h>
 #include <ChilliSource/UI/Text.h>
 
@@ -44,12 +47,12 @@
 
 namespace MeatlyJam
 {
-	void GameState::CreateSystems()
+	void GameStateClass::CreateSystems()
 	{
 		//Add systems here.
 	}
 
-	void GameState::OnInit()
+	void GameStateClass::OnInit()
 	{
 		GetScene()->SetClearColour( CSCore::Colour::k_cornflowerBlue );
 
@@ -88,22 +91,16 @@ namespace MeatlyJam
 		}
 		GetScene()->Add( Sprite_Test );
 
-		// Create the test text UI element
-		auto widgetFactory = CSCore::Application::Get()->GetWidgetFactory();
-
-		auto templateWidget = resourcepool->LoadResource<CSUI::WidgetTemplate>( CSCore::StorageLocation::k_package, "UI/Game.csui" );
-
-		CSUI::WidgetSPtr widget = widgetFactory->Create( templateWidget );
-		GetUICanvas()->AddWidget( widget );
-		widget->GetWidget( "Test" )->SetRelativePosition( CSCore::Vector2( 0, 0 ) );
+		// Initialize life event system
+		EventSystem.Initialize();
 	}
 
-	void GameState::OnUpdate( f32 in_deltaTime )
+	void GameStateClass::OnUpdate( f32 in_deltaTime )
 	{
 		//Update stuff here.
 	}
 
-	void GameState::OnDestroy()
+	void GameStateClass::OnDestroy()
 	{
 		//Destruction stuff here.
 	}

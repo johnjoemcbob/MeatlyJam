@@ -26,8 +26,10 @@
 //  THE SOFTWARE.
 //
 
+// Associated header
 #include <App.h>
 
+// Required application headers
 #include <MenuState.h>
 #include <GameState.h>
 
@@ -50,7 +52,7 @@ namespace MeatlyJam
 
 	void App::PushInitialState()
 	{
-		GetStateManager()->Push( CSCore::StateSPtr( new MenuState() ) );
+		GetStateManager()->Push( CSCore::StateSPtr( new MenuStateClass() ) );
 	}
 
 	void App::OnDestroy()

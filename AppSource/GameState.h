@@ -29,12 +29,16 @@
 #ifndef MEATLYJAM_GAMESTATE_H
 #define MEATLYJAM_GAMESTATE_H
 
+// Required application headers
+#include <EventSystem.h>
+
+// Required engine headers
 #include <ChilliSource/ChilliSource.h>
 #include <ChilliSource/Core/State.h>
 
 namespace MeatlyJam
 {
-	class GameState : public CSCore::State
+	class GameStateClass : public CSCore::State
 	{
 		public:
 			void CreateSystems() override;
@@ -42,9 +46,14 @@ namespace MeatlyJam
 			void OnUpdate( f32 in_deltaTime ) override;
 			void OnDestroy() override;
 
+			inline EventSystemClass* GetEventSystem() { return &EventSystem; };
+
 		private:
 			CSCore::EntitySPtr Camera;
 			CSCore::EntitySPtr Sprite_Test;
+
+			// Life event gameplay system
+			EventSystemClass EventSystem;
 	};
 }
 

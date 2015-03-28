@@ -10,6 +10,9 @@
     <ClCompile Include="..\..\AppSource\MenuState.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\AppSource\EventSystem.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\AppSource\App.h">
@@ -19,6 +22,15 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\AppSource\MenuState.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\AppSource\Event.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\AppSource\EventSystem.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\AppSource\EventCallbacks.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

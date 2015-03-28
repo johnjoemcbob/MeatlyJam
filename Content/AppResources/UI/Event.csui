@@ -17,15 +17,10 @@
 			},
 			"Children": [
 				{
-					"Type": "Label",
-					"Text": "Options",
-					"TextColour": "0.0 0.0 0.0 1.0"
-				},
-				{
 					"Type": "HighlightButton",
 					"Name": "AvatarBorder",
-					"RelPosition": "-0.40 0.25",
-					"RelSize": "0.1 0.25",
+					"RelPosition": "-0.395 0.24",
+					"RelSize": "0.2 0.5",
 					"NormalDrawable": {
 						"Type": "NinePatch",
 						"Insets": "0.25 0.25 0.25 0.25",
@@ -41,6 +36,119 @@
 								"Type": "Standard",
 								"TexturePath": "face.png"
 							}
+						}
+					]
+				},
+				{
+					"Type": "HighlightButton",
+					"Name": "DescriptionBorder",
+					"RelPosition": "0.12 0.24",
+					"RelSize": "0.75 0.5",
+					"NormalDrawable": {
+						"Type": "NinePatch",
+						"Insets": "0.25 0.25 0.25 0.25",
+						"TexturePath": "grey_panel.png"
+					},
+					"Children": [
+						{
+							"Type": "Label",
+							"Name": "Description",
+							"Text": "This is a description of the event which is currently taking place in your game dev's life",
+							"TextColour": "0.0 0.0 0.0 1.0",
+							"RelPosition": "0.0 0.0",
+							"Scale": "0.95 0.95",
+							"TextScale": "0.5 0.5"
+						}
+					]
+				},
+				{
+					"Type": "HighlightButton",
+					"Name": "OptionsBorder",
+					"RelPosition": "0.0 -0.26",
+					"RelSize": "0.99 0.45",
+					"NormalDrawable": {
+						"Type": "NinePatch",
+						"Insets": "0.25 0.25 0.25 0.25",
+						"TexturePath": "grey_panel.png"
+					},
+					"Children": [
+						{
+							"Type": "HighlightButton",
+							"Name": "Option1Border",
+							"RelPosition": "0.0 0.32",
+							"RelSize": "0.99 0.3",
+							"NormalDrawable": {
+								"Type": "NinePatch",
+								"Insets": "0.25 0.25 0.25 0.25",
+								"TexturePath": "red_button04.png"
+							},
+							"HighlightDrawable": {
+								"Type": "NinePatch",
+								"Insets": "0.25 0.25 0.25 0.25",
+								"TexturePath": "red_button05.png"
+							},
+							"Children": [
+								{
+									"Type": "Label",
+									"Name": "Option1",
+									"Text": "This is an action your game dev can take",
+									"TextColour": "1.0 1.0 1.0 1.0",
+									"RelPosition": "0.0 0.0",
+									"TextScale": "0.5 0.5"
+								}
+							]
+						},
+						{
+							"Type": "HighlightButton",
+							"Name": "Option2Border",
+							"RelPosition": "0.0 0.0",
+							"RelSize": "0.99 0.3",
+							"NormalDrawable": {
+								"Type": "NinePatch",
+								"Insets": "0.25 0.25 0.25 0.25",
+								"TexturePath": "red_button04.png"
+							},
+							"HighlightDrawable": {
+								"Type": "NinePatch",
+								"Insets": "0.25 0.25 0.25 0.25",
+								"TexturePath": "red_button05.png"
+							},
+							"Children": [
+								{
+									"Type": "Label",
+									"Name": "Option2",
+									"Text": "This is an action your game dev can take",
+									"TextColour": "1.0 1.0 1.0 1.0",
+									"RelPosition": "0.0 0.0",
+									"TextScale": "0.5 0.5"
+								}
+							]
+						},
+						{
+							"Type": "HighlightButton",
+							"Name": "Option3Border",
+							"RelPosition": "0.0 -0.32",
+							"RelSize": "0.99 0.3",
+							"NormalDrawable": {
+								"Type": "NinePatch",
+								"Insets": "0.25 0.25 0.25 0.25",
+								"TexturePath": "red_button04.png"
+							},
+							"HighlightDrawable": {
+								"Type": "NinePatch",
+								"Insets": "0.25 0.25 0.25 0.25",
+								"TexturePath": "red_button05.png"
+							},
+							"Children": [
+								{
+									"Type": "Label",
+									"Name": "Option3",
+									"Text": "This is an action your game dev can take",
+									"TextColour": "1.0 1.0 1.0 1.0",
+									"RelPosition": "0.0 0.0",
+									"TextScale": "0.5 0.5"
+								}
+							]
 						}
 					]
 				}

@@ -12,11 +12,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\AppSource\App.cpp" />
+    <ClCompile Include="..\..\AppSource\EventSystem.cpp" />
     <ClCompile Include="..\..\AppSource\GameState.cpp" />
     <ClCompile Include="..\..\AppSource\MenuState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\AppSource\App.h" />
+    <ClInclude Include="..\..\AppSource\Event.h" />
+    <ClInclude Include="..\..\AppSource\EventCallbacks.h" />
+    <ClInclude Include="..\..\AppSource\EventSystem.h" />
     <ClInclude Include="..\..\AppSource\GameState.h" />
     <ClInclude Include="..\..\AppSource\MenuState.h" />
   </ItemGroup>

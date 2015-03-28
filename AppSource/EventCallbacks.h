@@ -1,7 +1,7 @@
 //
-//  App.h
+//  EventCallbacks.h
 //  MeatlyJam
-//  Created by Matthew Cormack 27/03/15
+//  Created by Matthew Cormack 28/03/15
 //
 //  The MIT License (MIT)
 //
@@ -26,23 +26,43 @@
 //  THE SOFTWARE.
 //
 
-#ifndef MEATLYJAM_APP_H
-#define MEATLYJAM_APP_H
+#ifndef MEATLYJAM_EVENTCALLBACKS_H
+#define MEATLYJAM_EVENTCALLBACKS_H
 
-// Required engine headers
-#include <ChilliSource/ChilliSource.h>
-#include <ChilliSource/Core/Base.h>
+// Required application headers
+#include <EventSystem.h>
 
 namespace MeatlyJam
 {
-	class App final : public CSCore::Application
+	// Enums
+	enum Events
 	{
-		public:
-			void CreateSystems() override;
-			void OnInit() override;
-			void PushInitialState() override;
-			void OnDestroy() override;
+		EVENT_LIFE = 0,
+		EVENT_LIFE_EMBRACE,
+		EVENT_LIFE_GAME,
+		EVENT_LIFE_IGNORE
 	};
+
+	// Forward Declarations
+	class EventSystemClass;
+
+	// Callback defines
+	void EventCallback_Life( EventSystemClass* eventsystem )
+	{
+		eventsystem->SetEvent( EVENT_LIFE );
+	}
+	void EventCallback_Life_Embrace( EventSystemClass* eventsystem )
+	{
+		eventsystem->SetEvent( EVENT_LIFE_EMBRACE );
+	}
+	void EventCallback_Life_Game( EventSystemClass* eventsystem )
+	{
+		eventsystem->SetEvent( EVENT_LIFE_GAME );
+	}
+	void EventCallback_Life_Ignore( EventSystemClass* eventsystem )
+	{
+		eventsystem->SetEvent( EVENT_LIFE_IGNORE );
+	}
 }
 
-#endif // MEATLYJAM_APP_H
+#endif // MEATLYJAM_EVENTCALLBACKS_H
